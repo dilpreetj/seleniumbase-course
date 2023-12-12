@@ -24,3 +24,18 @@ class TestHomePage(BaseCase):
 
         # assert the text is visible
         self.assert_text_visible('Showing Results for Lenovo')
+
+    def test_search_flow_with_xpath(self):
+        self.open('https://practice-react.sdetunicorns.com/')
+
+        # click on the search input field
+        self.click("//button[@class='search-active']")
+
+        # type Lenovo in the search input field
+        self.type("//input[@placeholder='Search']", 'Lenovo')
+
+        # click on search button
+        self.click("//button[@class='button-search']")
+
+        # assert the text is visible
+        self.assert_text_visible('Showing Results for Lenovo')
