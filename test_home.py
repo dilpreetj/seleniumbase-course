@@ -39,3 +39,14 @@ class TestHomePage(BaseCase):
 
         # assert the text is visible
         self.assert_text_visible('Showing Results for Lenovo')
+
+    def test_nav_links(self):
+        self.open('https://practice-react.sdetunicorns.com/')
+
+        self.assert_text('Products', '.main-menu  li:nth-child(2)')
+
+        expected_nav_text = ['Home', 'Products', 'About Us', 'Contact', 'Upload']
+
+        for i, text in enumerate(expected_nav_text, start=1):
+            # print(i, text)
+            self.assert_text(text, f'.main-menu  li:nth-child({i})')
