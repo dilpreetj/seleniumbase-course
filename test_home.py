@@ -50,3 +50,12 @@ class TestHomePage(BaseCase):
         for i, text in enumerate(expected_nav_text, start=1):
             # print(i, text)
             self.assert_text(text, f'.main-menu  li:nth-child({i})')
+
+    def test_click_about_link_and_verify_url(self):
+        self.open('https://practice-react.sdetunicorns.com/')
+
+        # Click the "About" link
+        self.click('.footer-list [href="/about"]')
+
+        # Assert URL
+        self.assert_url_contains('about')
