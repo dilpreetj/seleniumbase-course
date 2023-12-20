@@ -75,3 +75,14 @@ class TestDemoPage(BaseCase):
 
         self.switch_to_default_content()
         self.assert_element('#progressBar')
+
+    def test_hover_dropdown(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        # self.hover('#myDropdown')
+        # self.click('#dropOption2')
+
+        self.hover_and_click('#myDropdown','#dropOption2')
+        self.assert_text('Link Two Selected', 'h3')
+
+        self.sleep(3)
