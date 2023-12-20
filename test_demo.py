@@ -42,3 +42,22 @@ class TestDemoPage(BaseCase):
         # root DOM
         self.switch_to_default_content()
         self.assert_element('#progressBar')
+
+    def test_checkbox(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        # assert image logo is not visible
+        self.assert_element_not_visible('img#logo')
+
+        # assert checkbox is not selected
+        self.assert_false(self.is_selected('#checkbox1'))
+
+        # click on the checkbox
+        self.click('#checkbox1')
+
+        # assert checkbox is selected
+        self.assert_true(self.is_selected('#checkbox1'))
+
+        # assert image logo is now visible
+        self.assert_element_visible('img#logo')
+
