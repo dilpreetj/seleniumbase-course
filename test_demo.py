@@ -85,4 +85,14 @@ class TestDemoPage(BaseCase):
         self.hover_and_click('#myDropdown','#dropOption2')
         self.assert_text('Link Two Selected', 'h3')
 
-        self.sleep(3)
+    def test_drag_and_drop(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        self.click('#checkBox1')
+        self.assert_element('#logo')
+
+        self.assert_element_not_visible('#drop2 img')
+
+        self.drag_and_drop('#logo', '#drop2')
+
+        self.assert_element('#drop2 img')
