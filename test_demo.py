@@ -29,3 +29,16 @@ class TestDemoPage(BaseCase):
         self.select_option_by_value('#mySelect', '50%')
         self.assert_element('meter[value="0.5"]')
 
+    def test_iframe(self):
+        # root DOM
+        self.open("https://seleniumbase.io/demo_page")
+        self.assert_element_not_visible('h4')
+
+        # switch frame to 2
+        self.switch_to_frame('#myFrame2')
+        self.assert_element('h4')
+        self.assert_text('iFrame Text', 'h4')
+
+        # root DOM
+        self.switch_to_default_content()
+        self.assert_element('#progressBar')
