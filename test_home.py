@@ -59,3 +59,20 @@ class TestHomePage(BaseCase):
 
         # Assert URL
         self.assert_url_contains('about')
+
+    def test_new_tab(self):
+        self.open('https://practice-react.sdetunicorns.com/')
+
+        print(self.driver.window_handles)
+
+        self.click('.copyright p a')
+
+        print(self.driver.window_handles)
+
+        self.switch_to_tab(1)
+
+        self.assert_title_contains('Master Software Testing and Automation')
+
+        self.switch_to_default_tab()
+
+        self.assert_title_contains('Practice with React')
