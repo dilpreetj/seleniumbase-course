@@ -61,3 +61,17 @@ class TestDemoPage(BaseCase):
         # assert image logo is now visible
         self.assert_element_visible('img#logo')
 
+    def test_checkbox_in_iframe(self):
+        self.open("https://seleniumbase.io/demo_page")
+
+        self.assert_false(self.is_element_visible('#checkBox6'))
+
+        self.switch_to_frame('#myFrame3')
+        self.assert_element('#checkBox6')
+        self.assert_false(self.is_selected('#checkBox6'))
+
+        self.click('#checkBox6')
+        self.assert_true(self.is_selected('#checkBox6'))
+
+        self.switch_to_default_content()
+        self.assert_element('#progressBar')
