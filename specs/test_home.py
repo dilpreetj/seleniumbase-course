@@ -1,26 +1,24 @@
 from seleniumbase import BaseCase
+from pages.home_page import HomePage
 
 
 class TestHomePage(BaseCase):
     def test_verify_page_title_and_url(self):
+        homepage = HomePage(self)
+
         # open home page
-        self.open('https://practice-react.sdetunicorns.com/')
+        homepage.open()
 
         # assert url and title contains SDET Unicorns
         self.assert_url_contains('sdetunicorns')
         self.assert_title_contains('SDET Unicorns')
 
     def test_search_flow(self):
-        self.open('https://practice-react.sdetunicorns.com/')
+        homepage = HomePage(self)
 
-        # click on the search input field
-        self.click('.search-active')
+        homepage.open()
 
-        # type Lenovo in the search input field
-        self.type("[placeholder='Search']", 'Lenovo')
-
-        # click on search button
-        self.click('.button-search')
+        homepage.search_for_item('Lenovo')
 
         # assert the text is visible
         self.assert_text_visible('Showing Results for Lenovo')
@@ -41,33 +39,30 @@ class TestHomePage(BaseCase):
         self.assert_text_visible('Showing Results for Lenovo')
 
     def test_nav_links(self):
-        self.open('https://practice-react.sdetunicorns.com/')
+        homepage = HomePage(self)
+        homepage.open()
 
-        self.assert_text('Products', '.main-menu  li:nth-child(2)')
+        self.assert_text('Products', homepage.product_link)
 
         expected_nav_text = ['Home', 'Products', 'About Us', 'Contact', 'Upload']
 
-        for i, text in enumerate(expected_nav_text, start=1):
-            # print(i, text)
-            self.assert_text(text, f'.main-menu  li:nth-child({i})')
+        homepage.verify_nav_links(expected_nav_text)
 
     def test_click_about_link_and_verify_url(self):
-        self.open('https://practice-react.sdetunicorns.com/')
+        homepage = HomePage(self)
+        homepage.open()
 
         # Click the "About" link
-        self.click('.footer-list [href="/about"]')
+        self.click(homepage.about_link)
 
         # Assert URL
         self.assert_url_contains('about')
 
     def test_new_tab(self):
-        self.open('https://practice-react.sdetunicorns.com/')
+        homepage = HomePage(self)
+        homepage.open()
 
-        print(self.driver.window_handles)
-
-        self.click('.copyright p a')
-
-        print(self.driver.window_handles)
+        self.click(homepage.copyright_link)
 
         self.switch_to_tab(1)
 
