@@ -21,7 +21,7 @@ class TestHomePage(BaseCase):
         homepage.search_for_item('Lenovo')
 
         # assert the text is visible
-        self.assert_text_visible('Showing Results for Lenovo')
+        self.assert_text_visible('Showing Results for Apple')
 
     def test_search_flow_with_xpath(self):
         self.open('https://practice-react.sdetunicorns.com/')

@@ -1,0 +1,2 @@
+SMALL_TIMEOUT = 3
+SCREENSHOT_NAME = 'image.png'
