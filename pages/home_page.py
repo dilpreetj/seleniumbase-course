@@ -1,4 +1,5 @@
 from seleniumbase import  BaseCase
+from config.default import BASE_URL
 
 
 class HomePage:
@@ -15,7 +16,7 @@ class HomePage:
         self.nav_links = '.main-menu  li'
 
     def open(self):
-        self.sb.open('https://practice-react.sdetunicorns.com/')
+        self.sb.open(BASE_URL)
 
     def search_for_item(self, item):
         self.sb.click(self.search_input)

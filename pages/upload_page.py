@@ -1,4 +1,5 @@
 from seleniumbase import BaseCase
+from config.default import BASE_URL
 
 
 class UploadPage:
@@ -13,7 +14,7 @@ class UploadPage:
         self.success_message = '.react-toast-notifications__toast__content'
 
     def open(self):
-        self.sb.open("https://practice-react.sdetunicorns.com/upload")
+        self.sb.open(f"{BASE_URL}/upload")
 
     def _upload_file(self, file_selector, file_path):
         self.sb.choose_file(file_selector, file_path)
