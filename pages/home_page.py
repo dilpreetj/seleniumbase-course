@@ -1,6 +1,6 @@
-from seleniumbase import  BaseCase
+from seleniumbase import BaseCase
 from config.default import BASE_URL
-
+from utils.helper import assert_list_text
 
 class HomePage:
     """
@@ -33,5 +33,6 @@ class HomePage:
         Verifies the text of nav links against expected text
         :param expected_nav_text: A list of expected text for each nav link
         """
-        for i, text in enumerate(expected_nav_text, start=1):
-            self.sb.assert_text(text, f'{self.nav_links}:nth-child({i})')
+        assert_list_text(self.sb, self.nav_links, expected_nav_text)
+        # for i, text in enumerate(expected_nav_text, start=1):
+        #     self.sb.assert_text(text, f'{self.nav_links}:nth-child({i})')
