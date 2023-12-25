@@ -11,7 +11,9 @@ class TestUploadPage(BaseCase):
         upload_page.open()
 
         # provide the file path
-        file_path = os.path.abspath("../data/sb_logo.png")
+        file_path = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), '..', 'data', 'sb_logo.png')
+        )
 
         upload_page.upload_single_file(file_path)
 
@@ -24,8 +26,12 @@ class TestUploadPage(BaseCase):
         upload_page.open()
 
         # provide the file path
-        file_path_1 = os.path.abspath("../data/sb_logo.png")
-        file_path_2 = os.path.abspath("../data/Selenium_Logo.png")
+        file_path_1 = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), '..', 'data', 'sb_logo.png')
+        )
+        file_path_2 = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), '..', 'data', 'Selenium_Logo.png')
+        )
 
         upload_page.upload_multiple_files([file_path_1, file_path_2])
 
