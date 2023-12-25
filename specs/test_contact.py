@@ -1,7 +1,45 @@
 from seleniumbase import BaseCase
+from parameterized import parameterized
 
 
 class TestContactForm(BaseCase):
+
+    @parameterized.expand([
+        (
+            "Roronoa Zoro",
+            "zoro@onepiece.com",
+            "Seeking Strong Swords",
+            "become the world's greatest swordsman"
+        ),
+        (
+            "Monkey D. Luffy",
+            "luffy@onepiece.com",
+            "Pirate King",
+            "I'm gonna be the Pirate King!",
+        ),
+        (
+            "Nami",
+            "nami@onepiece.com",
+            "Navigation Charts",
+            "Looking for detailed navigation charts of the Grand Line.",
+        ),
+    ])
+    def test_form_submission_param(self, name, email, subject, message):
+        self.open("https://practice-react.sdetunicorns.com/contact")
+
+        # fill in the form fields
+        self.type("input[name='name']", name)
+        self.type("input[name='email']", email)
+        self.type("input[name='subject']", subject)
+        self.type("textarea[name='message']", message)
+
+        # submit the form
+        self.click("button[type='submit']")
+
+        # Assertions
+        self.assert_text("Message sent successfully", '.react-toast-notifications__toast__content')
+        self.assert_element_not_visible('[class*=error]')
+
     def test_form_submission(self):
         self.open("https://practice-react.sdetunicorns.com/contact")
 
