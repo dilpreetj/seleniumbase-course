@@ -1,11 +1,12 @@
-import os.path
-
+import pytest
 from seleniumbase import BaseCase
 from pages.upload_page import UploadPage
 from utils.helper import get_image_path
 
 
 class TestUploadPage(BaseCase):
+
+    @pytest.mark.smoke
     def test_upload_single_file(self):
         upload_page = UploadPage(self)
 
@@ -19,6 +20,8 @@ class TestUploadPage(BaseCase):
         # assert file uploaded
         self.assert_text("Image uploaded successfully", upload_page.success_message)
 
+    @pytest.mark.smoke
+    @pytest.mark.long_running_test
     def test_upload_multiple_files(self):
         upload_page = UploadPage(self)
 
