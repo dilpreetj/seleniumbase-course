@@ -45,6 +45,7 @@ jobs:
       run: |
         pipenv run black --check specs/
     - name: Run pytest
+      id: test_step
       run: |
         pipenv run pytest specs/test_home.py -n=4 --browser=chrome --headless -v -s --dashboard --html=report/report.html
       continue-on-error: true
@@ -53,3 +54,6 @@ jobs:
       with:
         name: my-artifact
         path: report/
+    - name: Fail job if tests failed
+      if: steps.test_step.outcome == 'failure'
+      run: exit 1
