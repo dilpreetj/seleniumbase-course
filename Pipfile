@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 seleniumbase = "4.22.0"
+flake8 = "*"
+black = "*"
+parameterized = "*"
 
 [dev-packages]
 
