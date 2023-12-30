@@ -79,7 +79,3 @@ class TestContactForm(BaseCase):
         # Assert "Message" should be present in the error message
         error_message = self.get_text('.error-message')
         self.assert_in("Message", error_message)
-
-
-
-

@@ -4,14 +4,14 @@ import pytest
 
 
 class TestHomePage(BaseCase):
-    
+
     def setUp(self, masterqa_mode=False):
-        super().setUp() # call the setup of the parent class if needed
+        super().setUp()  # call the setup of the parent class if needed
         self.homepage = HomePage(self)
         self.homepage.open()
 
         print('Login')
-        
+
     def tearDown(self):
         print('Log Out')
         super().tearDown()
