@@ -38,6 +38,9 @@ jobs:
       run: |
         echo "def test_1(): pass" > nothing.py
         pipenv run pytest nothing.py
+    - name: Run Linter
+      run: |
+        pipenv run flake8 specs/
     - name: Run pytest
       run: |
         pipenv run pytest specs/test_home.py --browser=chrome --headless -v -s
