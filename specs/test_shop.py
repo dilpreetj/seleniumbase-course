@@ -7,7 +7,7 @@ class TestShopPage(BaseCase):
         self.open("https://practice-react.sdetunicorns.com/shop-grid-standard")
 
         # Expected texts for each li item
-        expected_texts = ["All Categories", "Laptop", "Electronics", "Keyboard"]
+        expected_texts = ["All Categories", "Laptop", "Electronics", "Mouse"]
 
         # Verify the text of each li item
         assert_list_text(self, ".sidebar-widget-list.mt-30 li", expected_texts)
