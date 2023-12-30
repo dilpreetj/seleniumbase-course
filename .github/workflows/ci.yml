@@ -46,4 +46,8 @@ jobs:
         pipenv run black --check specs/
     - name: Run pytest
       run: |
-        pipenv run pytest specs/test_home.py --browser=chrome --headless -v -s
+        pipenv run pytest specs/test_home.py -n=4 --browser=chrome --headless -v -s --dashboard --html=report/report.html
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: report/
