@@ -22,7 +22,7 @@ jobs:
         python-version: '3.12'
     - name: Install dependencies
       run: |
-        python -m install pipenv
+        python -m pip install pipenv
         pipenv install
     - name: Install Chrome
       run: |
