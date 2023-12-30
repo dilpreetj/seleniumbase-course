@@ -10,6 +10,6 @@ class TestShopPage(BaseCase):
         expected_texts = ["All Categories", "Laptop", "Electronics", "Keyboard"]
 
         # Verify the text of each li item
-        assert_list_text(self, '.sidebar-widget-list.mt-30 li', expected_texts)
+        assert_list_text(self, ".sidebar-widget-list.mt-30 li", expected_texts)
         # for i, text in enumerate(expected_texts, start=1):
         #     self.assert_text(text, f'.sidebar-widget-list.mt-30 li:nth-child({i})')

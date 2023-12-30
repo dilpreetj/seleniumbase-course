@@ -4,16 +4,15 @@ import pytest
 
 
 class TestHomePage(BaseCase):
-
     def setUp(self, masterqa_mode=False):
         super().setUp()  # call the setup of the parent class if needed
         self.homepage = HomePage(self)
         self.homepage.open()
 
-        print('Login')
+        print("Login")
 
     def tearDown(self):
-        print('Log Out')
+        print("Log Out")
         super().tearDown()
 
     @pytest.mark.smoke
@@ -22,7 +21,7 @@ class TestHomePage(BaseCase):
         self.assert_url_contains("sdetunicorns")
         self.assert_title_contains("SDET Unicorns")
 
-        print('TEST')
+        print("TEST")
 
     @pytest.mark.search
     @pytest.mark.smoke
@@ -46,7 +45,6 @@ class TestHomePage(BaseCase):
         self.assert_text_visible("Showing Results for Lenovo")
 
     def test_nav_links(self):
-
         self.assert_text("Products", self.homepage.product_link)
 
         expected_nav_text = ["Home", "Products", "About Us", "Contact", "Upload"]
