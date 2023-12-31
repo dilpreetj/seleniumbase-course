@@ -44,10 +44,12 @@ jobs:
     - name: Run File Formatter
       run: |
         pipenv run black --check specs/
-    - name: Run pytest
-      id: test_step
+    - name: Run tests on Browserstack
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
       run: |
-        pipenv run pytest specs/test_home.py -n=4 --browser=chrome --headless -v -s --dashboard --html=report/report.html
+        pipenv run pytest specs/test_home.py -n=4 --browser=remote --server=${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub.browserstack.com --cap_file=config/bs_caps.json --headless -v -s --dashboard --html=report/report.html
     - name: Upload Artifacts
       if: always()
       uses: actions/upload-artifact@v4

@@ -1,5 +1,3 @@
-import requests
-from seleniumbase import BaseCase
 from utils.helper import assert_list_text
 from specs.base_test import BaseTest
 

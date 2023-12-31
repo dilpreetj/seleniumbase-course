@@ -1,5 +1,4 @@
 import pytest
-from seleniumbase import BaseCase
 from pages.upload_page import UploadPage
 from utils.helper import get_image_path
 from specs.base_test import BaseTest
