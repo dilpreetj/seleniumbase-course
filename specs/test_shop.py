@@ -1,8 +1,10 @@
+import requests
 from seleniumbase import BaseCase
 from utils.helper import assert_list_text
+from specs.base_test import BaseTest
 
 
-class TestShopPage(BaseCase):
+class TestShopPage(BaseTest):
     def test_verify_categories_text(self):
         self.open("https://practice-react.sdetunicorns.com/shop-grid-standard")
 

@@ -1,0 +1,8 @@
+{
+  "browser": "Chrome",
+  "os": "Windows",
+  "os_version": "10",
+  "browser_version": "latest",
+  "build": "SeleniumBase Tests",
+  "name": "*"
+}
